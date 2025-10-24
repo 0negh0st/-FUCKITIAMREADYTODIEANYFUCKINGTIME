@@ -1,0 +1,57 @@
+<!-- 
+  Archivo: index.html
+  Descripción: Página de redirección del proyecto. 
+  Detecta si el usuario accede desde un dispositivo móvil o tablet 
+  para aplicar una lógica de redirección personalizada.
+-->
+
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+        
+    <meta charset="UTF-8">
+    <title>Redirección</title>
+    <script>
+        /**
+         * Función: esMovilOTablet()
+         * Descripción: Detecta si el usuario accede desde un dispositivo móvil o tablet 
+         * analizando el "user agent" del navegador.
+         */
+        // Cambio 1
+        // Detecta si es móvil o tablet
+        function esMovilOTablet() {
+            let agente = navigator.userAgent.toLowerCase();
+            let moviles = [
+                'iphone', 'ipod', 'ipad', 'android', 'blackberry', 'bb10',
+                'mini', 'windows phone', 'iemobile', 'mobi', 'tablet', 'kindle', 'playbook'
+            ];
+             // Devuelve true si el "user agent" contiene alguna palabra clave de dispositivo móvil
+            return moviles.some(dispositivo => agente.includes(dispositivo));
+        }
+
+        // Redirección
+       /**
+         * Evento: window.onload
+         * Descripción: Ejecuta la lógica de redirección cuando la página termina de cargar.
+         */
+        window.onload = function() {
+                  // Ejemplo de redirección condicional
+                 // if (esMovilOTablet()) {
+                //     window.location.href = "https://m.tusitio.com";
+               // } else {
+              //     window.location.href = "https://www.tusitio.com";
+             // }
+            if (esMovilOTablet()) {
+                window.location.href = "/vuelos/";
+            } else {
+                window.location.href = "https://www.jetsmart.com";
+            }
+        };
+    </script>
+
+
+</head>
+<body>
+    <p></p>
+</body>
+</html>
